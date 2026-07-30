@@ -3,287 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patsy's Tavern & Restaurant</title>
+    <title>Patsy's Tavern & Restaurant | Premium Dining</title>
     <style>
         :root {
-            --primary-color: #4a1525;
-            --secondary-color: #c9a054;
-            --text-color: #333333;
-            --light-bg: #fdfbf7;
+            --primary: #9d2235;
+            --accent: #d4af37;
+            --glass-bg: rgba(26, 15, 18, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow: rgba(212, 175, 55, 0.3);
+            --text: #f5f5f7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            background-color: var(--light-bg);
+            font-family: 'SF Pro Display', -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: #0d0608;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.5;
         }
 
+        /* Ambient Animated Background Blobs */
+        .ambient-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(157,34,53,0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+            animation: floatGlow 12s infinite ease-in-out alternate;
+        }
+        
+        .ambient-glow-2 {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, rgba(0,0,0,0) 70%);
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+            animation: floatGlow 18s infinite ease-in-out alternate-reverse;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, 50px) scale(1.15); }
+        }
+
+        /* Premium Frosted Header */
         header {
-            background-color: var(--primary-color);
-            color: white;
             text-align: center;
-            padding: 2rem 1rem;
-            border-bottom: 4px solid var(--secondary-color);
+            padding: 4.5rem 1rem 3.5rem;
+            position: relative;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-family: 'Cinzel', 'Georgia', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255,255,255,0.1);
         }
 
         header p {
-            margin: 0.5rem 0 0;
-            font-style: italic;
-            color: var(--secondary-color);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #b0a8b3;
+            margin-top: 0.75rem;
         }
 
+        /* Glassmorphic Navigation Bar */
         nav {
-            background-color: #33111a;
-            text-align: center;
-            padding: 0.5rem;
             position: sticky;
-            top: 0;
+            top: 20px;
+            max-width: 650px;
+            margin: 0 auto;
+            background: rgba(20, 10, 12, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.8rem;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-around;
             z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
         }
 
         nav a {
-            color: white;
+            color: #ccc;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        nav a:hover {
-            color: var(--secondary-color);
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: var(--primary);
+            box-shadow: 0 0 15px rgba(157,34,53,0.6);
+            text-shadow: 0 1px 5px rgba(255,255,255,0.2);
         }
 
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
+        /* Glassmorphic Section Cards */
         section {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary-color);
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 3rem;
+            margin-bottom: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        section:hover {
+            border-color: rgba(212,175,55,0.25);
+            transform: translateY(-4px);
         }
 
         h2 {
-            color: var(--primary-color);
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 0.5rem;
-            margin-top: 0;
+            font-family: 'Georgia', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(212,175,55,0.4), transparent);
+        }
+
+        /* Filter Controls */
+        .menu-filters {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: #ccc;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* Interactive Grid Layouts */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
-        .menu-item {
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 0.5rem;
+        .menu-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 1.75rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .menu-item-header {
+        .menu-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .menu-meta {
             display: flex;
             justify-content: space-between;
-            font-weight: bold;
-            color: #555;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
         }
 
-        .menu-item-description {
-            font-size: 0.9rem;
-            color: #666;
+        .menu-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .menu-price {
+            font-family: monospace;
+            color: var(--accent);
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .menu-desc {
+            font-size: 0.92rem;
+            color: #a09ba3;
             font-style: italic;
-            margin-top: 0.25rem;
         }
 
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .info-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .info-table td:first-child {
-            font-weight: bold;
-            color: var(--primary-color);
-            width: 30%;
-        }
-
-        form {
+        /* Two-Column Grid For Location Details */
+        .grid-split {
             display: grid;
-            gap: 1rem;
-            max-width: 500px;
-            margin-top: 1rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-split { grid-template-columns: 1fr; gap: 2rem; }
+            header h1 { font-size: 2.3rem; }
+            section { padding: 1.75rem; }
+            nav { width: 90%; }
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .info-row span:first-child {
+            color: #a09ba3;
+            font-weight: 500;
+        }
+
+        .info-row span:last-child {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Mock Map Visual Component */
+        .map-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: #a09ba3;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .map-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            animation: pulsePin 2s infinite ease-in-out;
+        }
+
+        @keyframes pulsePin {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Futuristic Form Interface */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 500px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         label {
-            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b0a8b3;
+            font-weight: 600;
         }
 
         input, select, textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            padding: 0.9rem 1.2rem;
+            color: #fff;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
         }
 
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(212,175,55,0.15);
         }
 
-        button:hover {
-            background-color: #631d32;
-        }
+        textarea { resize: none; }
 
-        footer {
-            background-color: #222;
-            color: #ccc;
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            margin-top: 4rem;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Patsy's Tavern</h1>
-        <p>Fine Dining, Spirits & Tradition Since 1944</p>
-    </header>
-
-    <nav>
-        <a href="#about">About Us</a>
-        <a href="#menu">Menu</a>
-        <a href="#hours">Hours & Location</a>
-        <a href="#reservations">Reservations</a>
-    </nav>
-
-    <div class="container">
-        
-        <section id="about">
-            <h2>Our Story</h2>
-            <p>Welcome to Patsy's Tavern, a cornerstone of the neighborhood community for over eight decades. Founded on the principles of fresh ingredients, classic culinary techniques, and a warm, welcoming atmosphere, we invite you to pull up a chair and become part of our history.</p>
-        </section>
-
-        <section id="menu">
-            <h2>House Specialties</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span>Classic Tavern Burger</span>
-                        <span>$16.00</span>
-                    </div>
-                    <div class="menu-item-description">Aged angus beef, sharp cheddar, house pickles, toasted brioche.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span>Brick Oven Pizza</span>
-                        <span>$18.00</span>
-                    </div>
-                    <div class="menu-item-description">Fresh mozzarella, crushed San Marzano tomatoes, fresh basil, extra virgin olive oil.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span>Garlic Herb Roasted Chicken</span>
-                        <span>$24.00</span>
-                    </div>
-                    <div class="menu-item-description">Served with fingerling potatoes, seasonal root vegetables, and natural au jus.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span>Tavern Fish & Chips</span>
-                        <span>$19.50</span>
-                    </div>
-                    <div class="menu-item-description">Beer-battered local cod, house-cut fries, tartar sauce, and lemon wedge.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="hours">
-            <h2>Hours & Location</h2>
-            <table class="info-table">
-                <tr>
-                    <td>Address</td>
-                    <td>123 Main Street, Hackensack, NJ 07601</td>
-                </tr>
-                <tr>
-                    <td>Mon - Thu</td>
-                    <td>4:00 PM - 10:00 PM</td>
-                </tr>
-                <tr>
-                    <td>Fri - Sat</td>
-                    <td>4:00 PM - 11:00 PM</td>
-                </tr>
-                <tr>
-                    <td>Sunday</td>
-                    <td>1:00 PM - 9:00 PM</td>
-                </tr>
-            </table>
-        </section>
-
-        <section id="reservations">
-            <h2>Book a Table</h2>
-            <form action="#" method="POST">
-                <div>
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
-                </div>
-                <div>
-                    <label for="guests">Number of Guests</label>
-                    <select id="guests" name="guests">
-                        <option value="1">1 Person</option>
-                        <option value="2" selected>2 People</option>
-                        <option value="3">3 People</option>
-                        <option value="4">4 People</option>
-                        <option value="5+">5+ People</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="date">Date</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-                <div>
-                    <label for="notes">Special Requests</label>
-                    <textarea id="notes" name="notes" rows="3" placeholder="Allergies, high chair needed, etc."></textarea>
-                </div>
-                <button type="submit">Submit Request</button>
-            </form>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Patsy's Tavern. All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+        /* Premium Glow Action Button */
+        .btn-glow {
+            background: linear-gradient(135deg, var(--primary) 0%, #b82e45 100%);
+            color: #fff;
