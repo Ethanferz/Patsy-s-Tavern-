@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patsy's Tavern & Restaurant</title>
+    <style>
+        :root {
+            --primary-color: #4a1525;
+            --secondary-color: #c9a054;
+            --text-color: #333333;
+            --light-bg: #fdfbf7;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        nav {
+            background-color: #33111a;
+            text-align: center;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .menu-item {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 0.25rem;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .info-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-table td:first-child {
+            font-weight: bold;
+            color: var(--primary-color);
+            width: 30%;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+            max-width: 500px;
+            margin-top: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #631d32;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Patsy's Tavern</h1>
+        <p>Fine Dining, Spirits & Tradition Since 1944</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#menu">Menu</a>
+        <a href="#hours">Hours & Location</a>
+        <a href="#reservations">Reservations</a>
+    </nav>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2>Our Story</h2>
+            <p>Welcome to Patsy's Tavern, a cornerstone of the neighborhood community for over eight decades. Founded on the principles of fresh ingredients, classic culinary techniques, and a warm, welcoming atmosphere, we invite you to pull up a chair and become part of our history.</p>
+        </section>
+
+        <section id="menu">
+            <h2>House Specialties</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>Classic Tavern Burger</span>
+                        <span>$16.00</span>
+                    </div>
+                    <div class="menu-item-description">Aged angus beef, sharp cheddar, house pickles, toasted brioche.</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>Brick Oven Pizza</span>
+                        <span>$18.00</span>
+                    </div>
+                    <div class="menu-item-description">Fresh mozzarella, crushed San Marzano tomatoes, fresh basil, extra virgin olive oil.</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>Garlic Herb Roasted Chicken</span>
+                        <span>$24.00</span>
+                    </div>
+                    <div class="menu-item-description">Served with fingerling potatoes, seasonal root vegetables, and natural au jus.</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>Tavern Fish & Chips</span>
+                        <span>$19.50</span>
+                    </div>
+                    <div class="menu-item-description">Beer-battered local cod, house-cut fries, tartar sauce, and lemon wedge.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hours">
+            <h2>Hours & Location</h2>
+            <table class="info-table">
+                <tr>
+                    <td>Address</td>
+                    <td>123 Main Street, Hackensack, NJ 07601</td>
+                </tr>
+                <tr>
+                    <td>Mon - Thu</td>
+                    <td>4:00 PM - 10:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Fri - Sat</td>
+                    <td>4:00 PM - 11:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>1:00 PM - 9:00 PM</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="reservations">
+            <h2>Book a Table</h2>
+            <form action="#" method="POST">
+                <div>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                <div>
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests" name="guests">
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5+">5+ People</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div>
+                    <label for="notes">Special Requests</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Allergies, high chair needed, etc."></textarea>
+                </div>
+                <button type="submit">Submit Request</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Patsy's Tavern. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
