@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patsy's Tavern & Restaurant</title>
+    <title>Bergen Coffee Roasters</title>
     <style>
         :root {
             --bg-main: #121212;
             --bg-secondary: #1a1a1a;
             --accent-gold: #cca450;
-            --accent-red: #8b1323;
             --text-primary: #ffffff;
-            --text-secondary: #9c9a9d;
+            --text-muted: #9c9a9d;
+            --input-border: rgba(255, 255, 255, 0.2);
             --smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -28,7 +28,7 @@
             padding: 0;
         }
 
-        /* Minimalist Navigation Layer */
+        /* Minimal Header Menu Utilities */
         nav {
             position: sticky;
             top: 0;
@@ -43,7 +43,7 @@
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             text-decoration: none;
             padding: 0.5rem 2rem;
             font-weight: 500;
@@ -56,10 +56,9 @@
             color: var(--text-primary);
         }
 
-        /* Large Centered Title Banner */
         header {
             text-align: center;
-            padding: 6rem 1rem 4rem;
+            padding: 7rem 1rem 3rem;
         }
 
         header h1 {
@@ -67,7 +66,7 @@
             font-size: 2.8rem;
             font-weight: 400;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         header p {
@@ -83,7 +82,7 @@
             padding: 0 2rem;
         }
 
-        /* Circular Trio Showcase Layout Grid */
+        /* Symmetric Circle Image Trio Showcase */
         .showcase-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -96,7 +95,7 @@
         @media (max-width: 900px) {
             .showcase-grid {
                 grid-template-columns: 1fr;
-                gap: 4rem;
+                gap: 4.5rem;
             }
         }
 
@@ -107,20 +106,21 @@
         }
 
         .circle-frame {
-            width: 240px;
-            height: 240px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--smooth);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+            background-color: #1a1a1a;
         }
 
         .showcase-card:hover .circle-frame {
             transform: scale(1.04);
             border-color: var(--accent-gold);
-            box-shadow: 0 15px 35px rgba(204, 164, 80, 0.15);
+            box-shadow: 0 15px 40px rgba(204, 164, 80, 0.15);
         }
 
         .circle-img {
@@ -131,25 +131,25 @@
 
         .showcase-title {
             font-family: 'Georgia', serif;
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             margin-bottom: 1rem;
             font-weight: 400;
         }
 
         .showcase-desc {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.8;
             max-width: 320px;
         }
 
-        /* Wide Full-Width Action Banner */
+        /* Continuous Wide Background Visual Break */
         .action-banner {
             width: 100%;
-            height: 450px;
+            height: 480px;
             overflow: hidden;
             position: relative;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -158,13 +158,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(40%) brightness(80%);
+            filter: grayscale(15%) brightness(75%);
         }
 
-        /* Minimalist Editorial Form Modules */
+        /* Seamless Customer Inquiries Submission Box */
         .contact-section {
             background-color: var(--bg-secondary);
-            padding: 5rem 0;
+            padding: 6rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -175,7 +175,7 @@
 
         .contact-box h2 {
             font-family: 'Georgia', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 400;
             text-align: center;
             margin-bottom: 0.5rem;
@@ -183,35 +183,35 @@
 
         .contact-box p {
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 3rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 3.5rem;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         label {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
             font-weight: 600;
         }
 
-        input, select, textarea {
+        input, textarea {
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid var(--input-border);
             padding: 0.8rem 0;
             color: var(--text-primary);
             font-size: 1rem;
@@ -219,7 +219,7 @@
             transition: var(--smooth);
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-bottom-color: var(--text-primary);
         }
@@ -232,13 +232,13 @@
             background-color: var(--text-primary);
             color: var(--bg-main);
             border: none;
-            padding: 1.1rem;
+            padding: 1.2rem;
             font-size: 0.95rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             transition: var(--smooth);
         }
 
@@ -249,10 +249,12 @@
 
         footer {
             text-align: center;
-            padding: 4rem 1rem;
-            color: var(--text-secondary);
+            padding: 5rem 1rem;
+            color: var(--text-muted);
             font-size: 0.85rem;
             letter-spacing: 0.5px;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
         }
     </style>
 </head>
@@ -260,18 +262,18 @@
 
     <nav>
         <a href="#about">About</a>
-        <a href="#menu">Menu</a>
+        <a href="#specials">Specials</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <header>
-        <h1>About Patsy's Tavern</h1>
-        <p>Fine Dining & Spirits Since 1944</p>
+        <h1>About Bergen Coffee Roasters</h1>
+        <p>20 Sheridan Ave · Ho-Ho-Kus, NJ 07423</p>
     </header>
 
     <div class="container">
         
-        <!-- Trio Circle Grid Module -->
+        <!-- Interactive Editorial Trio Panels -->
         <div class="showcase-grid" id="about">
             
             <div class="showcase-card">
@@ -302,18 +304,18 @@
 
     </div>
 
-    <!-- Wide Full-Width Focal Image -->
-    <div class="action-banner" id="menu">
-        <img src="https://unsplash.com" alt="Tavern Interior Atmospheric Backdrop" class="banner-img">
+    <!-- Wide Atmospheric Media Break -->
+    <div class="action-banner" id="specials">
+        <img src="https://unsplash.com" alt="Fresh Small Batch Coffee Beans roasting" class="banner-img">
     </div>
 
-    <!-- Minimalist Contact Hub Section -->
+    <!-- Editorial Inquiries Form Block -->
     <div class="contact-section" id="contact">
         <div class="contact-box">
             <h2>Questions?</h2>
             <p>Contact us</p>
             
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message dispatched safely to Bergen Coffee Roasters.');">
                 <div class="input-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" required>
@@ -332,7 +334,7 @@
     </div>
 
     <footer>
-        <p>Copyright © 2026 Patsy's Tavern - All Rights Reserved.</p>
+        <p>Copyright © 2026 Bergen Coffee - All Rights Reserved.</p>
     </footer>
 
 </body>
