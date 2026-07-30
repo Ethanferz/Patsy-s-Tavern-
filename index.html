@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +6,13 @@
     <title>Patsy's Tavern & Restaurant</title>
     <style>
         :root {
-            --tavern-red: #9e1b2e;
-            --tavern-dark-blue: #0b111e;
-            --tavern-charcoal: #121824;
-            --tavern-gold: #e2ba6e;
-            --tavern-cream: #f4efe3;
-            --smooth-transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --bg-main: #121212;
+            --bg-secondary: #1a1a1a;
+            --accent-gold: #cca450;
+            --accent-red: #8b1323;
+            --text-primary: #ffffff;
+            --text-secondary: #9c9a9d;
+            --smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         html {
@@ -19,324 +20,320 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--tavern-dark-blue);
-            color: var(--tavern-cream);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.7;
             margin: 0;
             padding: 0;
         }
 
-        /* Nav Interactive Hover Indicator States */
+        /* Minimalist Navigation Layer */
         nav {
             position: sticky;
             top: 0;
-            background-color: rgba(11, 17, 30, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
-            padding: 1.2rem;
-            border-bottom: 2px solid var(--tavern-red);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 1000;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
         }
 
         nav a {
-            color: var(--tavern-cream);
+            color: var(--text-secondary);
             text-decoration: none;
             padding: 0.5rem 2rem;
-            font-weight: bold;
+            font-weight: 500;
+            font-size: 0.95rem;
             letter-spacing: 1px;
-            font-size: 1.05rem;
-            position: relative;
-            transition: var(--smooth-transition);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--tavern-gold);
-            transition: var(--smooth-transition);
-            transform: translateX(-50%);
+            transition: var(--smooth);
         }
 
         nav a:hover {
-            color: var(--tavern-gold);
+            color: var(--text-primary);
         }
 
-        nav a:hover::after {
-            width: 70%;
-        }
-
-        nav a:active {
-            transform: scale(0.92);
-        }
-
+        /* Large Centered Title Banner */
         header {
             text-align: center;
             padding: 6rem 1rem 4rem;
-            background: linear-gradient(to bottom, rgba(158, 27, 46, 0.2), transparent);
         }
 
         header h1 {
-            font-size: 3.6rem;
-            color: #ffffff;
-            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
             margin-bottom: 0.5rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
         }
 
         header p {
-            font-size: 1.15rem;
-            color: var(--tavern-gold);
+            color: var(--accent-gold);
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-weight: bold;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem 6rem;
+            padding: 0 2rem;
         }
 
-        section {
-            padding: 4rem 0 1rem;
-        }
-
-        .section-title {
-            font-size: 2.4rem;
-            color: var(--tavern-gold);
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.3rem;
-        }
-
-        .category-status {
-            text-align: center;
-            font-style: italic;
-            color: #8c97a8;
-            margin-bottom: 3.5rem;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .about-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.25rem;
-            line-height: 1.9;
-            color: #e6eef8;
-        }
-
-        /* Responsive Food Grid Matrix */
-        .menu-grid {
+        /* Circular Trio Showcase Layout Grid */
+        .showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 6rem;
         }
 
-        @media(max-width: 768px) {
-            .menu-grid {
+        @media (max-width: 900px) {
+            .showcase-grid {
                 grid-template-columns: 1fr;
+                gap: 4rem;
             }
-            header h1 { font-size: 2.6rem; }
         }
 
-        .food-item-card {
-            background-color: var(--tavern-charcoal);
-            border-radius: 14px;
+        .showcase-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .circle-frame {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(226, 186, 110, 0.05);
-            cursor: pointer;
-            transition: var(--smooth-transition);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--smooth);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .image-wrapper {
-            width: 100%;
-            height: 320px;
-            overflow: hidden;
-            position: relative;
-            border-bottom: 4px solid var(--tavern-red);
-            background-color: #070b14;
+        .showcase-card:hover .circle-frame {
+            transform: scale(1.04);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(204, 164, 80, 0.15);
         }
 
-        .food-photo {
+        .circle-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--smooth-transition);
         }
 
-        /* Hover Micro-interaction Targets */
-        .food-item-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(226, 186, 110, 0.25);
-            box-shadow: 0 20px 40px rgba(158, 27, 46, 0.25);
+        .showcase-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
         }
 
-        .food-item-card:hover .food-photo {
-            transform: scale(1.05);
-            opacity: 0.95;
+        .showcase-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 320px;
         }
 
-        .food-item-card:active {
-            transform: translateY(-2px) scale(0.99);
+        /* Wide Full-Width Action Banner */
+        .action-banner {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .food-details {
-            padding: 2rem;
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%) brightness(80%);
         }
 
-        .food-info-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.6rem;
+        /* Minimalist Editorial Form Modules */
+        .contact-section {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .food-name {
-            font-size: 1.45rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .food-price {
-            font-size: 1.35rem;
-            color: var(--tavern-gold);
-            font-weight: bold;
-            font-family: monospace;
-        }
-
-        .food-description {
-            color: #bac4d2;
-            font-size: 1.05rem;
-        }
-
-        /* Seating Registration Form */
-        .booking-panel {
-            background-color: var(--tavern-charcoal);
-            padding: 4rem;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(158, 27, 46, 0.15);
-            max-width: 850px;
+        .contact-box {
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.2rem;
+        .contact-box h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 0.5rem;
         }
 
-        .full-row {
-            grid-column: span 2;
+        .contact-box p {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 3rem;
         }
 
-        @media(max-width: 600px) {
-            .form-grid * { grid-column: span 2 !important; }
-            .booking-panel { padding: 2rem; }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         label {
-            display: block;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--tavern-gold);
-            margin-bottom: 0.6rem;
-            font-weight: bold;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
         }
 
-        input, select {
-            width: 100%;
-            padding: 1.1rem;
-            background-color: var(--tavern-dark-blue);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-            border-radius: 8px;
+        input, select, textarea {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 0;
+            color: var(--text-primary);
+            font-size: 1rem;
             font-family: inherit;
-            font-size: 1.05rem;
-            transition: var(--smooth-transition);
+            transition: var(--smooth);
         }
 
-        input:focus, select:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--tavern-gold);
-            box-shadow: 0 0 12px rgba(226, 186, 110, 0.15);
+            border-bottom-color: var(--text-primary);
+        }
+
+        textarea {
+            resize: none;
         }
 
         button {
-            width: 100%;
-            background: linear-gradient(135deg, var(--tavern-red) 0%, #bd243a 100%);
-            color: #ffffff;
+            background-color: var(--text-primary);
+            color: var(--bg-main);
             border: none;
-            padding: 1.2rem;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 1.1rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(158, 27, 46, 0.3);
-            transition: var(--smooth-transition);
+            margin-top: 1rem;
+            transition: var(--smooth);
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(158, 27, 46, 0.5);
+            background-color: var(--accent-gold);
+            color: #000000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#about">Story</a>
+        <a href="#about">About</a>
         <a href="#menu">Menu</a>
-        <a href="#reservations">Reservations</a>
+        <a href="#contact">Contact</a>
     </nav>
 
     <header>
-        <h1>Patsy's Tavern</h1>
+        <h1>About Patsy's Tavern</h1>
         <p>Fine Dining & Spirits Since 1944</p>
     </header>
 
     <div class="container">
         
-        <section id="about">
-            <h2 class="section-title">Our Story</h2>
-            <div class="category-status">To be decided</div>
-            <div class="about-content">
-                Welcome to Patsy's Tavern, a cornerstone of the neighborhood community for over eight decades. Founded on the principles of fresh ingredients, classic culinary techniques, and a warm, welcoming atmosphere, we invite you to pull up a chair and become part of our history.
-            </div>
-        </section>
-
-        <section id="menu">
-            <h2 class="section-title">House Specialties</h2>
-            <div class="category-status">To be decided</div>
+        <!-- Trio Circle Grid Module -->
+        <div class="showcase-grid" id="about">
             
-            <div class="menu-grid">
-                <!-- Pizza Item Block -->
-                <div class="food-item-card">
-                    <div class="image-wrapper">
-                        <img src="https://unsplash.com" alt="Famous Thin Crust Pizza" class="food-photo">
-                    </div>
-                    <div class="food-details">
-                        <div class="food-info-main">
-                            <span class="food-name">Famous Thin Crust Pizza</span>
-                            <span class="food-price">$18.00</span>
-                        </div>
-                        <div class="food-description">Crispy brick-oven baked pie layered with pure San Marzano tomato reduction, melted fresh mozzarella, and sweet garden basil leaves.</div>
-                    </div>
+            <div class="showcase-card">
+                <div class="circle-frame">
+                    <img src="https://unsplash.com" alt="Our Story" class="circle-img">
                 </div>
+                <h3 class="showcase-title">Our Story</h3>
+                <p class="showcase-desc">To be decided</p>
+            </div>
 
-                <!-- Meatballs Item Block -->
+            <div class="showcase-card">
+                <div class="circle-frame">
+                    <img src="https://unsplash.com" alt="Our Mission" class="circle-img">
+                </div>
+                <h3 class="showcase-title">Our Mission</h3>
+                <p class="showcase-desc">To be decided</p>
+            </div>
+
+            <div class="showcase-card">
+                <div class="circle-frame">
+                    <img src="https://unsplash.com" alt="Our Team" class="circle-img">
+                </div>
+                <h3 class="showcase-title">Our Team</h3>
+                <p class="showcase-desc">To be decided</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Wide Full-Width Focal Image -->
+    <div class="action-banner" id="menu">
+        <img src="https://unsplash.com" alt="Tavern Interior Atmospheric Backdrop" class="banner-img">
+    </div>
+
+    <!-- Minimalist Contact Hub Section -->
+    <div class="contact-section" id="contact">
+        <div class="contact-box">
+            <h2>Questions?</h2>
+            <p>Contact us</p>
+            
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2026 Patsy's Tavern - All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
