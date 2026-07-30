@@ -3,309 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patsy's Tavern & Restaurant | Premium Interface</title>
+    <title>Patsy's Tavern & Restaurant</title>
     <style>
-        /* Base Design Tokens & System Sync */
         :root {
-            --primary: #9d2235;
-            --accent: #d4af37;
-            --bg-gradient: radial-gradient(circle at top, #140a0c 0%, #060203 100%);
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.07);
-            --text-main: #f5f5f7;
-            --text-muted: #a09ba3;
-            --shadow: rgba(0, 0, 0, 0.5);
-        }
-
-        /* Light Mode Tokens Override */
-        [data-theme="light"] {
-            --bg-gradient: radial-gradient(circle at top, #fcfafb 0%, #eff2f5 100%);
-            --glass-bg: rgba(0, 0, 0, 0.03);
-            --glass-border: rgba(0, 0, 0, 0.08);
-            --text-main: #1c1c1e;
-            --text-muted: #636366;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --brand-red: #801423;
+            --brand-dark: #120d0e;
+            --brand-cream: #f4efe6;
+            --brand-gold: #dcae54;
+            --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-main);
-            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            background-color: var(--brand-dark);
+            color: var(--brand-cream);
             line-height: 1.6;
-            transition: background 0.4s ease, color 0.4s ease;
+            padding-bottom: 6rem;
         }
 
-        /* Floating Layout Toolbar Controls */
-        .system-tray {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2000;
-        }
-
-        .theme-toggle-btn {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            padding: 0.7rem;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 12px var(--shadow);
-            font-size: 1.2rem;
+        /* Hero Banner Image Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(rgba(18, 13, 14, 0.4), var(--brand-dark)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            transition: transform 0.2s;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.08);
-        }
-
-        header {
+            align-items: center;
             text-align: center;
-            padding: 5rem 1rem 2rem;
+            padding: 1rem;
         }
 
-        header h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+        .hero h1 {
+            font-size: 4rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
             margin-bottom: 0.5rem;
         }
 
-        header p {
-            color: var(--accent);
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--brand-gold);
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: bold;
         }
 
         nav {
             position: sticky;
-            top: 20px;
-            max-width: 500px;
-            margin: 2rem auto;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            padding: 0.5rem;
-            border-radius: 40px;
-            display: flex;
-            justify-content: space-around;
+            top: 0;
+            background-color: rgba(18, 13, 14, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            text-align: center;
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(220, 174, 84, 0.2);
             z-index: 1000;
-            box-shadow: 0 10px 30px var(--shadow);
         }
 
         nav a {
-            color: var(--text-muted);
+            color: var(--brand-cream);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            transition: all 0.2s;
+            padding: 0.5rem 2rem;
+            font-weight: bold;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
-        nav a:hover, nav a.active {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.1);
+        nav a:hover {
+            color: var(--brand-gold);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1050px;
             margin: 0 auto;
-            padding: 0 1.5rem 5rem;
+            padding: 0 2rem;
         }
 
         section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 2.5rem;
-            border-radius: 20px;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 8px 32px var(--shadow);
+            padding: 5rem 0 2rem;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--brand-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Responsive Grid Engine */
-        .menu-grid {
+        .category-desc {
+            text-align: center;
+            font-style: italic;
+            color: #a59e96;
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Food Media Showcases */
+        .menu-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3.5rem;
         }
 
-        .menu-item {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
+        @media (max-width: 600px) {
+            .menu-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        .food-card {
+            background-color: #1a1516;
             border-radius: 12px;
-            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(220, 174, 84, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .menu-header {
+        .food-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .food-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--brand-red);
+        }
+
+        .food-details {
+            padding: 2rem;
+        }
+
+        .food-header {
             display: flex;
             justify-content: space-between;
-            font-weight: 700;
+            align-items: baseline;
             margin-bottom: 0.5rem;
         }
 
-        .menu-price {
-            color: var(--accent);
+        .food-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffffff;
         }
 
-        .menu-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .food-price {
+            font-size: 1.3rem;
+            color: var(--brand-gold);
+            font-weight: bold;
         }
 
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .food-desc {
+            color: var(--brand-cream);
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+
+        /* Booking Visual Elements */
+        .booking-box {
+            background: linear-gradient(145deg, #1a1516, #120d0e);
+            padding: 4rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(220, 174, 84, 0.15);
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 600px) {
+            form * { grid-column: span 2 !important; }
+            .booking-box { padding: 2rem; }
         }
 
         label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--brand-gold);
+            margin-bottom: 0.6rem;
+            font-weight: bold;
         }
 
         input, select, textarea {
-            background: rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--glass-border);
-            padding: 0.8rem 1rem;
-            color: var(--text-main);
-            border-radius: 10px;
-            font-size: 0.95rem;
             width: 100%;
+            padding: 1.1rem;
+            background-color: #241d1f;
+            border: 1px solid rgba(220, 174, 84, 0.2);
+            color: #ffffff;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--brand-gold);
+            background-color: #2b2225;
         }
 
-        .btn-submit {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 1rem;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
+        button {
             width: 100%;
-            transition: opacity 0.2s;
-            box-shadow: 0 4px 12px rgba(157, 34, 53, 0.3);
+            background-color: var(--brand-red);
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
 
-        .btn-submit:hover {
-            opacity: 0.9;
-        }
-
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            padding: 2rem 0;
+        button:hover {
+            background-color: #991c2e;
         }
     </style>
 </head>
 <body>
 
-    <!-- Utility Settings Control -->
-    <div class="system-tray">
-        <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" title="Toggle View Mode">🌓</button>
+    <div class="hero">
+        <h1>Patsy's Tavern</h1>
+        <p>Fine Dining & Tradition Since 1944</p>
     </div>
 
-    <header>
-        <h1>Patsy's Tavern</h1>
-        <p>Fine Dining & Spirits Since 1944</p>
-    </header>
-
-    <nav id="hubNav">
-        <a href="#about" class="active">About</a>
-        <a href="#menu">Menu</a>
+    <nav>
+        <a href="#about">Story</a>
+        <a href="#menu">Menu Highlights</a>
         <a href="#reservations">Reservations</a>
     </nav>
 
     <div class="container">
         
         <section id="about">
-            <h2>Our Story</h2>
-            <p>Welcome to Patsy's Tavern, a cornerstone of the neighborhood community for over eight decades. Founded on the principles of fresh ingredients, classic culinary techniques, and a warm, welcoming atmosphere, we invite you to pull up a chair and become part of our history.</p>
-        </section>
-
-        <section id="menu">
-            <h2>House Specialties</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span>Classic Tavern Burger</span>
-                        <span class="menu-price">$16.00</span>
-                    </div>
-                    <div class="menu-desc">Aged angus beef, sharp cheddar, house pickles, toasted brioche.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span>Brick Oven Pizza</span>
-                        <span class="menu-price">$18.00</span>
-                    </div>
-                    <div class="menu-desc">Fresh mozzarella, crushed San Marzano tomatoes, fresh basil, extra virgin olive oil.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span>Garlic Herb Roasted Chicken</span>
-                        <span class="menu-price">$24.00</span>
-                    </div>
-                    <div class="menu-desc">Served with fingerling potatoes, seasonal root vegetables, and natural au jus.</div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <span>Tavern Fish & Chips</span>
-                        <span class="menu-price">$19.50</span>
-                    </div>
-                    <div class="menu-desc">Beer-battered local cod, house-cut fries, tartar sauce, and lemon wedge.</div>
-                </div>
+            <h2 class="section-title">Our Story</h2>
+            <div class="category-desc">To be decided</div>
+            <div style="text-align: center; max-width: 750px; margin: 0 auto; font-size: 1.2rem; line-height: 1.9;">
+                Welcome to Patsy's Tavern, a cornerstone of the neighborhood community for over eight decades. Founded on the principles of fresh ingredients, classic culinary techniques, and a warm, welcoming atmosphere, we invite you to pull up a chair and become part of our history.
             </div>
         </section>
 
-        <section id="reservations">
-            <h2>Book a Table</h2>
-            <!-- Real Endpoint via Formspree/FormBold can be pasted in action -->
-            <form id="resForm" action="https://formbold.com" method="POST" onsubmit="interceptSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
+        <section id="menu">
+            <h2 class="section-title">House Specialties</h2>
+            <div class="category-desc">To be decided</div>
+            
+            <div class="menu-layout">
+                <div class="food-card">
+                    <img src="https://unsplash.com" alt="Brick Oven Pizza" class="food-img">
+                    <div class="food-details">
+                        <div class="food-header">
+                            <span class="food-name">Brick Oven Pizza</span>
+                            <span class="food-price">$18.00</span>
+                        </div>
+                        <div class="food-desc">Fresh mozzarella, crushed San Marzano tomatoes, fresh basil, extra virgin olive oil.</div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="guests">Number of Guests</label>
-                    <select id="guests" name="guests">
-                        <option value="1">1 Person</option>
-                        <option value="2" selected>2 People</option>
-                        <option value="3">3 People</option>
-                        <option value="4">4 People</option>
-                    </select>
+
+                <div class="food-card">
+                    <img src="https://unsplash.com" alt="Classic Tavern Burger" class="food-img">
+                    <div class="food-details">
+                        <div class="food-header">
+                            <span class="food-name">Classic Tavern Burger</span>
+                            <span class="food-price">$16.00</span>
+                        </div>
+                        <div class="food-desc">Aged angus beef, sharp cheddar, house pickles, toasted brioche.</div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <img src="https://unsplash.com" alt="Garlic Herb Roasted Chicken" class="food-img">
+                    <div class="food-details">
+                        <div class="food-header">
+                            <span class="food-name">Garlic Herb Roasted Chicken</span>
+                            <span class="food-price">$24.00</span>
+                        </div>
+                        <div class="food-desc">Served with fingerling potatoes, seasonal root vegetables, and natural au jus.</div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <img src="https://unsplash.com" alt="Tavern Fish & Chips" class="food-img">
+                    <div class="food-details">
+                        <div class="food-header">
+                            <span class="food-name">Tavern Fish & Chips</span>
