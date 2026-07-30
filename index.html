@@ -6,11 +6,12 @@
     <title>Patsy's Tavern & Restaurant</title>
     <style>
         :root {
-            --brand-red: #801423;
-            --brand-dark: #120d0e;
-            --brand-cream: #f4efe6;
-            --brand-gold: #dcae54;
-            --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            --tavern-red: #8b1323;
+            --tavern-black: #110e0f;
+            --tavern-charcoal: #1c1819;
+            --tavern-gold: #cca450;
+            --tavern-cream: #f4eee1;
+            --smooth-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -19,295 +20,328 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Georgia', serif;
-            background-color: var(--brand-dark);
-            color: var(--brand-cream);
+            background-color: var(--tavern-black);
+            color: var(--tavern-cream);
             line-height: 1.6;
-            padding-bottom: 6rem;
         }
 
-        /* Hero Banner Image Section */
-        .hero {
-            position: relative;
-            height: 60vh;
-            background: linear-gradient(rgba(18, 13, 14, 0.4), var(--brand-dark)), 
-                        url('https://unsplash.com') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--brand-gold);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
+        /* Smooth Floating Navigation Bar */
         nav {
             position: sticky;
             top: 0;
-            background-color: rgba(18, 13, 14, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            text-align: center;
+            background-color: rgba(17, 14, 15, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
             padding: 1.2rem;
-            border-bottom: 1px solid rgba(220, 174, 84, 0.2);
+            border-bottom: 2px solid var(--tavern-red);
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
         nav a {
-            color: var(--brand-cream);
+            color: var(--tavern-cream);
             text-decoration: none;
             padding: 0.5rem 2rem;
             font-weight: bold;
-            font-size: 1rem;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            font-size: 1.05rem;
+            position: relative;
+            transition: var(--smooth-transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--tavern-gold);
+            transition: var(--smooth-transition);
+            transform: translateX(-50%);
         }
 
         nav a:hover {
-            color: var(--brand-gold);
+            color: var(--tavern-gold);
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        nav a:active {
+            transform: scale(0.92);
+        }
+
+        /* Immersive Visual Header */
+        header {
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            background: linear-gradient(to bottom, rgba(139, 19, 35, 0.15), transparent);
+        }
+
+        header h1 {
+            font-size: 3.8rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--tavern-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
         }
 
         .container {
-            max-width: 1050px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 2rem 6rem;
         }
 
         section {
-            padding: 5rem 0 2rem;
+            padding: 4rem 0 1rem;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            color: var(--brand-gold);
+            font-size: 2.4rem;
+            color: var(--tavern-gold);
             text-align: center;
-            margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 0.3rem;
         }
 
-        .category-desc {
+        .category-status {
             text-align: center;
             font-style: italic;
-            color: #a59e96;
+            color: #8a8284;
             margin-bottom: 3.5rem;
             font-size: 1.1rem;
+            letter-spacing: 0.5px;
         }
 
-        /* Food Media Showcases */
-        .menu-layout {
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: #e2dcd0;
+        }
+
+        /* Rich Food Image Display Engine */
+        .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 3.5rem;
         }
 
-        @media (max-width: 600px) {
-            .menu-layout {
+        @media(max-width: 768px) {
+            .menu-grid {
                 grid-template-columns: 1fr;
             }
-            .hero h1 { font-size: 2.5rem; }
+            header h1 { font-size: 2.6rem; }
         }
 
-        .food-card {
-            background-color: #1a1516;
-            border-radius: 12px;
+        .food-item-card {
+            background-color: var(--tavern-charcoal);
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(220, 174, 84, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(204, 164, 80, 0.08);
+            cursor: pointer;
+            transition: var(--smooth-transition);
         }
 
-        .food-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .food-img {
+        .image-wrapper {
             width: 100%;
-            height: 280px;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 4px solid var(--tavern-red);
+        }
+
+        .food-photo {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-bottom: 3px solid var(--brand-red);
+            transition: var(--smooth-transition);
+        }
+
+        /* Hover & Click Visual States */
+        .food-item-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(204, 164, 80, 0.3);
+            box-shadow: 0 20px 40px rgba(139, 19, 35, 0.25);
+        }
+
+        .food-item-card:hover .food-photo {
+            transform: scale(1.06);
+        }
+
+        .food-item-card:active {
+            transform: translateY(-2px) scale(0.98);
         }
 
         .food-details {
             padding: 2rem;
         }
 
-        .food-header {
+        .food-info-main {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .food-name {
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: bold;
             color: #ffffff;
         }
 
         .food-price {
-            font-size: 1.3rem;
-            color: var(--brand-gold);
+            font-size: 1.35rem;
+            color: var(--tavern-gold);
             font-weight: bold;
+            font-family: 'Courier New', monospace;
         }
 
-        .food-desc {
-            color: var(--brand-cream);
-            opacity: 0.85;
-            font-size: 1rem;
+        .food-description {
+            color: #bfaea3;
+            font-size: 1.05rem;
         }
 
-        /* Booking Visual Elements */
-        .booking-box {
-            background: linear-gradient(145deg, #1a1516, #120d0e);
+        /* Smooth Interactive Table Booking Module */
+        .booking-panel {
+            background-color: var(--tavern-charcoal);
             padding: 4rem;
             border-radius: 16px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(220, 174, 84, 0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: 1px solid rgba(139, 19, 35, 0.2);
+            max-width: 850px;
+            margin: 0 auto;
         }
 
-        form {
+        .form-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.2rem;
         }
 
-        .full-width {
+        .full-row {
             grid-column: span 2;
         }
 
-        @media (max-width: 600px) {
-            form * { grid-column: span 2 !important; }
-            .booking-box { padding: 2rem; }
+        @media(max-width: 600px) {
+            .form-grid * { grid-column: span 2 !important; }
+            .booking-panel { padding: 2rem; }
         }
 
         label {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--brand-gold);
+            letter-spacing: 1.5px;
+            color: var(--tavern-gold);
             margin-bottom: 0.6rem;
             font-weight: bold;
         }
 
-        input, select, textarea {
+        input, select {
             width: 100%;
             padding: 1.1rem;
-            background-color: #241d1f;
-            border: 1px solid rgba(220, 174, 84, 0.2);
+            background-color: #110e0f;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ffffff;
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            transition: var(--smooth-transition);
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus, select:focus {
             outline: none;
-            border-color: var(--brand-gold);
-            background-color: #2b2225;
+            border-color: var(--tavern-gold);
+            box-shadow: 0 0 12px rgba(204, 164, 80, 0.2);
+            background-color: #171314;
         }
 
         button {
             width: 100%;
-            background-color: var(--brand-red);
+            background: linear-gradient(135deg, var(--tavern-red) 0%, #b31c31 100%);
             color: #ffffff;
             border: none;
             padding: 1.2rem;
             font-size: 1.1rem;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 6px;
+            letter-spacing: 1.5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            box-shadow: 0 6px 20px rgba(139, 19, 35, 0.4);
+            transition: var(--smooth-transition);
         }
 
         button:hover {
-            background-color: #991c2e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 19, 35, 0.6);
+        }
+
+        button:active {
+            transform: translateY(1px);
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>Patsy's Tavern</h1>
-        <p>Fine Dining & Tradition Since 1944</p>
-    </div>
-
     <nav>
         <a href="#about">Story</a>
-        <a href="#menu">Menu Highlights</a>
+        <a href="#menu">Menu</a>
         <a href="#reservations">Reservations</a>
     </nav>
 
+    <header>
+        <h1>Patsy's Tavern</h1>
+        <p>Fine Dining & Spirits Since 1944</p>
+    </header>
+
     <div class="container">
         
+        <!-- About Block Element -->
         <section id="about">
             <h2 class="section-title">Our Story</h2>
-            <div class="category-desc">To be decided</div>
-            <div style="text-align: center; max-width: 750px; margin: 0 auto; font-size: 1.2rem; line-height: 1.9;">
+            <div class="category-status">To be decided</div>
+            <div class="about-content">
                 Welcome to Patsy's Tavern, a cornerstone of the neighborhood community for over eight decades. Founded on the principles of fresh ingredients, classic culinary techniques, and a warm, welcoming atmosphere, we invite you to pull up a chair and become part of our history.
             </div>
         </section>
 
+        <!-- Restaurant Image Showcase Grid -->
         <section id="menu">
             <h2 class="section-title">House Specialties</h2>
-            <div class="category-desc">To be decided</div>
+            <div class="category-status">To be decided</div>
             
-            <div class="menu-layout">
-                <div class="food-card">
-                    <img src="https://unsplash.com" alt="Brick Oven Pizza" class="food-img">
+            <div class="menu-grid">
+                <!-- Pizza Showcase -->
+                <div class="food-item-card">
+                    <div class="image-wrapper">
+                        <img src="https://unsplash.com" alt="Patsy's Legendary Thin Crust Pizza" class="food-photo">
+                    </div>
                     <div class="food-details">
-                        <div class="food-header">
-                            <span class="food-name">Brick Oven Pizza</span>
+                        <div class="food-info-main">
+                            <span class="food-name">Famous Thin Crust Pizza</span>
                             <span class="food-price">$18.00</span>
                         </div>
-                        <div class="food-desc">Fresh mozzarella, crushed San Marzano tomatoes, fresh basil, extra virgin olive oil.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <img src="https://unsplash.com" alt="Classic Tavern Burger" class="food-img">
-                    <div class="food-details">
-                        <div class="food-header">
-                            <span class="food-name">Classic Tavern Burger</span>
-                            <span class="food-price">$16.00</span>
-                        </div>
-                        <div class="food-desc">Aged angus beef, sharp cheddar, house pickles, toasted brioche.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <img src="https://unsplash.com" alt="Garlic Herb Roasted Chicken" class="food-img">
-                    <div class="food-details">
-                        <div class="food-header">
-                            <span class="food-name">Garlic Herb Roasted Chicken</span>
-                            <span class="food-price">$24.00</span>
-                        </div>
-                        <div class="food-desc">Served with fingerling potatoes, seasonal root vegetables, and natural au jus.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <img src="https://unsplash.com" alt="Tavern Fish & Chips" class="food-img">
-                    <div class="food-details">
-                        <div class="food-header">
-                            <span class="food-name">Tavern Fish & Chips</span>
