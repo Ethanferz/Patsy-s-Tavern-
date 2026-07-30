@@ -7,17 +7,11 @@
     <style>
         :root {
             --tavern-red: #8b1323;
-            --tavern-black: #110e0f;
-            --tavern-charcoal: #1c1819;
-            --tavern-gold: #cca450;
-            --tavern-cream: #f4eee1;
-            --smooth-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --tavern-black: #0c090a;
+            --tavern-charcoal: #161314;
+            --tavern-gold: #dcae54;
+            --tavern-cream: #f6f0e2;
+            --smooth-transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         html {
@@ -29,21 +23,23 @@
             background-color: var(--tavern-black);
             color: var(--tavern-cream);
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Smooth Floating Navigation Bar */
+        /* Interactive Navigation Links */
         nav {
             position: sticky;
             top: 0;
-            background-color: rgba(17, 14, 15, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(12, 9, 10, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
             padding: 1.2rem;
             border-bottom: 2px solid var(--tavern-red);
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
         }
 
         nav a {
@@ -81,23 +77,22 @@
             transform: scale(0.92);
         }
 
-        /* Immersive Visual Header */
         header {
             text-align: center;
-            padding: 6rem 1rem 4rem;
+            padding: 5rem 1rem 3rem;
             background: linear-gradient(to bottom, rgba(139, 19, 35, 0.15), transparent);
         }
 
         header h1 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             color: #ffffff;
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--tavern-gold);
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -141,7 +136,7 @@
             color: #e2dcd0;
         }
 
-        /* Rich Food Image Display Engine */
+        /* Food Media Card Showcase Engine */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -160,7 +155,7 @@
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(204, 164, 80, 0.08);
+            border: 1px solid rgba(220, 174, 84, 0.05);
             cursor: pointer;
             transition: var(--smooth-transition);
         }
@@ -171,6 +166,7 @@
             overflow: hidden;
             position: relative;
             border-bottom: 4px solid var(--tavern-red);
+            background-color: #110e0f;
         }
 
         .food-photo {
@@ -180,19 +176,20 @@
             transition: var(--smooth-transition);
         }
 
-        /* Hover & Click Visual States */
+        /* Hover Feedback Microinteractions */
         .food-item-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(204, 164, 80, 0.3);
-            box-shadow: 0 20px 40px rgba(139, 19, 35, 0.25);
+            border-color: rgba(220, 174, 84, 0.25);
+            box-shadow: 0 20px 40px rgba(139, 19, 35, 0.2);
         }
 
         .food-item-card:hover .food-photo {
-            transform: scale(1.06);
+            transform: scale(1.05);
+            opacity: 0.95;
         }
 
         .food-item-card:active {
-            transform: translateY(-2px) scale(0.98);
+            transform: translateY(-2px) scale(0.99);
         }
 
         .food-details {
@@ -216,7 +213,7 @@
             font-size: 1.35rem;
             color: var(--tavern-gold);
             font-weight: bold;
-            font-family: 'Courier New', monospace;
+            font-family: monospace;
         }
 
         .food-description {
@@ -224,13 +221,13 @@
             font-size: 1.05rem;
         }
 
-        /* Smooth Interactive Table Booking Module */
+        /* Forms Layout */
         .booking-panel {
             background-color: var(--tavern-charcoal);
             padding: 4rem;
             border-radius: 16px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 1px solid rgba(139, 19, 35, 0.2);
+            border: 1px solid rgba(139, 19, 35, 0.15);
             max-width: 850px;
             margin: 0 auto;
         }
@@ -263,8 +260,8 @@
         input, select {
             width: 100%;
             padding: 1.1rem;
-            background-color: #110e0f;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #0c090a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             color: #ffffff;
             border-radius: 8px;
             font-family: inherit;
@@ -275,13 +272,12 @@
         input:focus, select:focus {
             outline: none;
             border-color: var(--tavern-gold);
-            box-shadow: 0 0 12px rgba(204, 164, 80, 0.2);
-            background-color: #171314;
+            box-shadow: 0 0 12px rgba(220, 174, 84, 0.15);
         }
 
         button {
             width: 100%;
-            background: linear-gradient(135deg, var(--tavern-red) 0%, #b31c31 100%);
+            background: linear-gradient(135deg, var(--tavern-red) 0%, #a7182a 100%);
             color: #ffffff;
             border: none;
             padding: 1.2rem;
@@ -291,17 +287,13 @@
             letter-spacing: 1.5px;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(139, 19, 35, 0.4);
+            box-shadow: 0 6px 20px rgba(139, 19, 35, 0.3);
             transition: var(--smooth-transition);
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(139, 19, 35, 0.6);
-        }
-
-        button:active {
-            transform: translateY(1px);
+            box-shadow: 0 10px 25px rgba(139, 19, 35, 0.5);
         }
     </style>
 </head>
@@ -320,7 +312,6 @@
 
     <div class="container">
         
-        <!-- About Block Element -->
         <section id="about">
             <h2 class="section-title">Our Story</h2>
             <div class="category-status">To be decided</div>
@@ -329,19 +320,23 @@
             </div>
         </section>
 
-        <!-- Restaurant Image Showcase Grid -->
         <section id="menu">
             <h2 class="section-title">House Specialties</h2>
             <div class="category-status">To be decided</div>
             
             <div class="menu-grid">
-                <!-- Pizza Showcase -->
+                <!-- Pizza Item -->
                 <div class="food-item-card">
                     <div class="image-wrapper">
-                        <img src="https://unsplash.com" alt="Patsy's Legendary Thin Crust Pizza" class="food-photo">
+                        <img src="https://api.delivery" onerror="this.src='https://unsplash.com'" alt="Thin Crust Pizza" class="food-photo">
                     </div>
                     <div class="food-details">
                         <div class="food-info-main">
                             <span class="food-name">Famous Thin Crust Pizza</span>
                             <span class="food-price">$18.00</span>
                         </div>
+                        <div class="food-description">Crispy brick-oven baked pie layered with pure San Marzano tomato reduction, melted fresh mozzarella, and sweet garden basil leaves.</div>
+                    </div>
+                </div>
+
+                <!-- Meatballs Item -->
